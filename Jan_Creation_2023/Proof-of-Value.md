@@ -1,7 +1,7 @@
 # Proof of Value
 *Metasploit Snort Rule*
 
-> The following image will show the process of the Metasploit configuration for the target machine(IP and Port).
+> "The following image will show the process of the Metasploit configuration for the target machine(IP and Port)."
 ![metasploit-config](images/Metasploit-config.png)
 Displaying the target machine information.
 ![metasploit-config](images/target-machine-info.png)
