@@ -1,4 +1,4 @@
-## January Documentation.md
+## January Documentation
 
 For our Janurary Creation our group decided to work on developing a Snort firewall rule that detects when there is potential metasploit/meterpreter activity being performed on a target. 
 
