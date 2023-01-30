@@ -7,7 +7,7 @@ This test case will include a target and an attacker machine. The target machine
 
 The following image will show the process of the Metasploit configuration for the target machine(IP and Port).
 
-![metasploit-config](images/Metasploit-config.png)
+![metasploit-config](images/Metasploit-config.png =100x20)
 
 Displaying the target machine information.
 
