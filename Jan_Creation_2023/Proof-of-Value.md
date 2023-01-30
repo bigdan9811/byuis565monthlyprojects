@@ -27,4 +27,4 @@ Showing the results on the target machine after the exploit was ran on the attac
 
 ---
 
-This test case provides a proof of value that our Metasploit Snort Rule will notify the user when there is a detection of a Meterpeter session.
+This test case provides a proof of value that our Metasploit Snort Rule will notify the user when there is a detection of a Meterpeter session. We decided to just alert the user and not terminate the session as to not interupt daily work flow. This can be modified depending on the use case. More documentation can be located [here](Documentation.md).
