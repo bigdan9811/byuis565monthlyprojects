@@ -1,0 +1,25 @@
+Description: Common temp folder locations
+Author: Jordan Johnson
+Version: 1.0
+Id: c222c98e-7f60-436e-995d-3667754cb10d
+RecreateDirectories: true
+Targets:
+    -
+        Name: Windows Temp
+        Category: FileKnowledge
+        Path: C:\Windows\Temp\
+        Recursive: true
+    -
+        Name: User Temp
+        Category: FileKnowledge
+        Path: C:\Users\%user%\AppData\*\Temp\ 
+        Recursive: true
+    -
+        Name: System Drive Temp
+        Category: FileKnowledge
+        Path: C:\Temp\
+        Recursive: true
+        Comment: "This is a nonstandard but very common location for a temporary folder."
+
+# Documentation
+# N/a
