@@ -3,7 +3,7 @@
 ## Table of Contents
 * [KAPE](#kape) 
 * [This Project](#this-project)
-* [Group Memebers](#group-members)
+* [Group Members](#group-members)
 
 ## KAPE
 
