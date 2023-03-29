@@ -10,4 +10,4 @@ Nicholas studied network traffic with tools such as Wireshark to identify and cl
 
 This rule alerts when tcp traffic is found using port 4444 (the default Meterpreter port), and sends the message "Meterpreter session detected". In Janurary we decided to just alert the user and not terminate the session as to not interupt daily work flow. For the March Creation, we implemented blocking the suspicious activity rather than only alerting that the activity was taking place.
 
-A test case will be included in the [**Proof-of-Value.md**](https://github.com/bigdan9811/byuis565monthlyprojects/blob/main/Mar_Creation_2023/Proof-of-Value.md) file of this repository. 
+A test case will be included in the [**Proof-of-Value.md**](https://github.com/bigdan9811/byuis565monthlyprojects/blob/main/Mar_Creation_2023/proof_of_value.md) file of this repository. 
