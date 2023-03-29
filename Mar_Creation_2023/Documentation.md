@@ -1,6 +1,6 @@
 ## March Documentation
 
-For our Janurary Creation our group decided to work on developing a Snort firewall rule that detects when there is potential Metasploit/Meterpreter activity being performed on a target. 
+For our March Creation our group decided to build off of our Janurary Creation and continue working on developing a Snort firewall rule that detects when there is potential Metasploit/Meterpreter activity being performed on a target. In January, we successfully were able to detect when there was activity over port 4444, a common Metasploit/Meterpreter port, but for the March creation, we added the ability to detect if the activity contained a versionless-HTTP response.
 
 Our idea came originally from a presentation given by Nicholas Trout, a Sandia National Lab employee, at a research conference. Nicholas' presentation can be found [**here**](https://www.osti.gov/biblio/1806612). 
 
@@ -8,6 +8,6 @@ Nicholas studied network traffic with tools such as Wireshark to identify and cl
 
 **Snort Rule:** `alert tcp any 4444 -> any any (msg:"Meterpreter session detected"; sid:1000001;)`
 
-This rule alerts when tcp traffic is found using port 4444 (the default Meterpreter port), and sends the message "Meterpreter session detected". We decided to just alert the user and not terminate the session as to not interupt daily work flow. This can be modified depending on the use case. 
+This rule alerts when tcp traffic is found using port 4444 (the default Meterpreter port), and sends the message "Meterpreter session detected". In Janurary we decided to just alert the user and not terminate the session as to not interupt daily work flow. For the March Creation, we implemented blocking the suspicious activity rather than only alerting that the activity was taking place.
 
-A test case will be included in the [**Proof-of-Value.md**](https://github.com/bigdan9811/byuis565monthlyprojects/blob/main/Jan_Creation_2023/Proof-of-Value.md) file of this repository. 
+A test case will be included in the [**Proof-of-Value.md**](https://github.com/bigdan9811/byuis565monthlyprojects/blob/main/Mar_Creation_2023/Proof-of-Value.md) file of this repository. 
