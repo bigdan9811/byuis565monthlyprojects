@@ -6,7 +6,46 @@ Our idea came originally from a presentation given by Nicholas Trout, a Sandia N
 
 Nicholas studied network traffic with tools such as Wireshark to identify and classify Meterpreter traffic. With his research we learned that some default configurations of Meterpreter include being used on port 4444 and having a version-less HTTP response. With this information, we built a specific Snort rule to look for this type of activity.
 
-**Snort Rule:** `alert tcp any 4444 -> any any (msg:"Meterpreter session detected"; sid:1000001;)`
+**Snort Rules:** 
+`alert tcp any 4444 -> any any (msg:"Possible meterpreter activity detected on port 4444"; \
+sid:12345;)
+
+alert tcp any any -> any any (msg:"Possible meterpreter activity detected in packet contents"; \
+content:"meterpreter"; \
+nocase; \
+sid:123456;)
+
+alert tcp any any -> any any (msg:"Detected possible SQL injection attempt"; \
+pcre:"/(user|usr|pass|password|pwd)=%27/"; \
+sid:13444324;)
+
+alert tcp any any -> any any (msg:"Detected upload of possible malicious code containing php passthru() function"; \
+content:"passthru("; \
+sid:123123;)
+
+alert tcp any any -> any any (msg:"Detected upload of possible malicious code containing exec() function"; \
+content:"exec("; \
+sid:123125;)
+
+alert tcp any any -> any any (msg:"Detected upload of possible malicious code containing system() function"; \
+content:"system("; \
+sid:1231251;)
+
+alert tcp any any -> any any (msg:"Detected upload of possible malicious code containing eval() function"; \
+content:"eval("; \
+sid:1231253;)
+
+alert tcp any any -> any any (msg:"Detected request for file containing unsafe code eval() function"; \
+flow:to_server; \
+content:"eval("; \
+sid:1231264;)
+
+alert tcp any any -> any any (msg:"Possible version-less http response"; \
+flow:established,to_server; \
+content:"HTTP/"; \
+#content:"\r\n\r\n"; \
+pcre:"/^HTTP\/\s*\r\n/smi"; \
+sid:1234567;)`
 
 This rule alerts when tcp traffic is found using port 4444 (the default Meterpreter port), and sends the message "Meterpreter session detected". In Janurary we decided to just alert the user and not terminate the session as to not interupt daily work flow. For the March Creation, we implemented blocking the suspicious activity rather than only alerting that the activity was taking place.
 
