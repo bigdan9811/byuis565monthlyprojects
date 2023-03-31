@@ -5,25 +5,25 @@ This test case will include a target and an attacker machine. The target machine
 
 ---
 
-The following image will shows the Meterpreter configuration (IP and Port).
+Text about image 1
 
-![metasploit-config](images/Metasploit-config.png)
+![metasploit-config](images/image1.png)
 
-This next image displays the target machine information.
+Text about image 2
 
-![metasploit-config](images/target-machine-info.png)
+![metasploit-config](images/image2.png)
 
-Next, the exploit is run from the attackers machine.
+Text about image 3
 
-![metasploit-config](images/running-exploit.png)
+![metasploit-config](images/image3.png)
 
-Below shows the results on the target machine **before** the Snort rule was implemented on the target machine.
+Text about image 4
 
-![metasploit-config](images/pre-metasploit-rule.png)
+![metasploit-config](images/image4.png)
 
-Showing the results on the target machine **after** the Snort rule was implemented on the target machine. Notice the "Meterpeter session detected" message being sent.
+Text about image 5
 
-![metasploit-config](images/post-metasploit-rule.png)
+![metasploit-config](images/image5.png)
 
 ---
 
