@@ -1,13 +1,14 @@
 ## March Documentation
 
-For our March Creation our group decided to build off of our Janurary Creation and continue working on developing a Snort firewall rule that detects when there is potential Metasploit/Meterpreter activity being performed on a target. In January, we successfully were able to detect when there was activity over port 4444, a common Metasploit/Meterpreter port, but for the March creation, we added the ability to detect if the activity contained a versionless-HTTP response.
+For our March Creation our group decided to build off of our Janurary Creation and continue working on developing a Snort firewall rules that detect when there is potential Metasploit/Meterpreter activity being performed on a target. In January, we successfully were able to detect when there was activity over port 4444, a common Metasploit/Meterpreter port, but for the March creation, we added several new Snort rules. With a better understanding of how Snort rules worked, we were able to add a lot of different types of rules. These rules will be further explained below.
 
 Our idea came originally from a presentation given by Nicholas Trout, a Sandia National Lab employee, at a research conference. Nicholas' presentation can be found [**here**](https://www.osti.gov/biblio/1806612). 
 
-Nicholas studied network traffic with tools such as Wireshark to identify and classify Meterpreter traffic. With his research we learned that some default configurations of Meterpreter include being used on port 4444 and having a version-less HTTP response. With this information, we built a specific Snort rule to look for this type of activity.
+Nicholas studied network traffic with tools such as Wireshark to identify and classify Meterpreter traffic. With his research we learned that some default configurations of Meterpreter include being used on port 4444 and having a version-less HTTP response. With this information, we built specific Snort rules to look for this type of activity. More information on the type of criteria we are looking for is included in his research, linked above.
 
 **Snort Rules:** 
-`alert tcp any 4444 -> any any (msg:"Possible meterpreter activity detected on port 4444"; \
+```
+alert tcp any 4444 -> any any (msg:"Possible meterpreter activity detected on port 4444"; \
 sid:12345;)
 
 alert tcp any any -> any any (msg:"Possible meterpreter activity detected in packet contents"; \
@@ -45,8 +46,23 @@ flow:established,to_server; \
 content:"HTTP/"; \
 #content:"\r\n\r\n"; \
 pcre:"/^HTTP\/\s*\r\n/smi"; \
-sid:1234567;)`
+sid:1234567;)
+```
 
-This rule alerts when tcp traffic is found using port 4444 (the default Meterpreter port), and sends the message "Meterpreter session detected". In Janurary we decided to just alert the user and not terminate the session as to not interupt daily work flow. For the March Creation, we implemented blocking the suspicious activity rather than only alerting that the activity was taking place.
+Our original rule created in Janurary alerts when tcp traffic is found using port 4444 (the default Meterpreter port), and sends the message "Meterpreter session detected". The above rules have the following funtionality, in order that they appear above. 
 
-A test case will be included in the [**Proof-of-Value.md**](https://github.com/bigdan9811/byuis565monthlyprojects/blob/main/Mar_Creation_2023/proof_of_value.md) file of this repository. 
+1st, detecting port 4444 activity. 
+
+2nd, detecting when "meterpreter" was included in the packet of the traffic.
+
+3rd, detecting potential SQL injection attempts.
+
+4th, detecting when potentially malicious code was uploaded, specifically when it contained a php passthru() function.
+
+5th, 6th, and 7th, detecting similarly as rule 4, but when there are exec(), system(), or evel() functions are included.
+
+8th, detecting when there is a request for a file containing code with an eval() function.
+
+9th, detecting when there is a possible version-less HTTP response.
+
+Test cases will be included in the [**Proof-of-Value.md**](https://github.com/bigdan9811/byuis565monthlyprojects/blob/main/Mar_Creation_2023/proof_of_value.md) file of this repository. 
