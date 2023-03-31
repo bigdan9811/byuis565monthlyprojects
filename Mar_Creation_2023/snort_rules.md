@@ -1,8 +1,8 @@
+```
 alert tcp any 4444 -> any any (msg:"Possible meterpreter activity detected on port 4444"; \
 sid:12345;)
 
 alert tcp any any -> any any (msg:"Possible meterpreter activity detected in packet contents"; \
-```
 content:"meterpreter"; \
 nocase; \
 sid:123456;)
