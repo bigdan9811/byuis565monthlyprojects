@@ -3,5 +3,4 @@
 - Garrett Morgan
 - Jordan Johnson
 - Conner Tracy
-- Robert Smith
 - Daniel Taylor
