@@ -4,3 +4,4 @@
 - Jordan Johnson
 - Conner Tracy
 - Daniel Taylor
+- Robert Smith
